@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <title>Глеб Юртаев | C# разработчик и создатель ботов</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,600;14..32,700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: linear-gradient(145deg, #f4f9fe 0%, #e9f0f5 100%);
+            color: #1a2c3e;
+            line-height: 1.5;
+            padding: 2rem 1.5rem;
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            background: rgba(255, 255, 255, 0.94);
+            backdrop-filter: blur(2px);
+            border-radius: 2.5rem;
+            box-shadow: 0 25px 45px -12px rgba(0, 0, 0, 0.2), 0 1px 2px rgba(0, 0, 0, 0.05);
+            overflow: hidden;
+            transition: all 0.2s ease;
+        }
+
+        .hero {
+            background: linear-gradient(135deg, #0f2c38 0%, #1c5d7a 100%);
+            padding: 2.5rem 2rem;
+            text-align: center;
+            color: white;
+        }
+
+        .hero h1 {
+            font-size: 2.8rem;
+            font-weight: 700;
+            letter-spacing: -0.02em;
+            margin-bottom: 0.5rem;
+            word-break: break-word;
+        }
+
+        .hero .badge {
+            display: inline-block;
+            background: rgba(255,255,255,0.2);
+            backdrop-filter: blur(4px);
+            padding: 0.35rem 1.2rem;
+            border-radius: 60px;
+            font-size: 0.9rem;
+            font-weight: 500;
+            margin-top: 0.75rem;
+        }
+
+        .birth-block {
+            margin-top: 1rem;
+            font-size: 1.1rem;
+            background: rgba(255,255,255,0.15);
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.4rem 1.2rem;
+            border-radius: 40px;
+            backdrop-filter: blur(4px);
+        }
+
+        .content {
+            padding: 2.5rem 2rem;
+        }
+
+        .section {
+            margin-bottom: 2.8rem;
+        }
+
+        .section-title {
+            font-size: 1.7rem;
+            font-weight: 600;
+            margin-bottom: 1.2rem;
+            border-left: 5px solid #1c7e9e;
+            padding-left: 1rem;
+            color: #0f3b4c;
+        }
+
+        .about-text {
+            background: #f0f6fa;
+            padding: 1.2rem 1.5rem;
+            border-radius: 1.5rem;
+            font-size: 1.05rem;
+            color: #1f3e4b;
+            box-shadow: inset 0 1px 2px #ffffff80, 0 2px 4px rgba(0,0,0,0.02);
+        }
+
+        .tech-badge {
+            display: inline-block;
+            background: #1c7e9e;
+            color: white;
+            padding: 0.2rem 0.9rem;
+            border-radius: 30px;
+            font-size: 0.85rem;
+            font-weight: 500;
+            margin-top: 0.6rem;
+        }
+
+        .cards-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1.5rem;
+            margin-top: 0.5rem;
+        }
+
+        .card {
+            flex: 1;
+            min-width: 260px;
+            background: white;
+            border-radius: 1.5rem;
+            padding: 1.4rem 1.5rem;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.05);
+            transition: transform 0.2s, box-shadow 0.2s;
+            border: 1px solid #e2edf2;
+        }
+
+        .card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 20px 30px -12px rgba(0, 32, 64, 0.12);
+            border-color: #cbdbe2;
+        }
+
+        .card h3 {
+            font-size: 1.4rem;
+            font-weight: 600;
+            margin-bottom: 0.6rem;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .card p {
+            color: #2c4b5e;
+            margin-bottom: 1rem;
+            font-size: 0.95rem;
+            line-height: 1.4;
+        }
+
+        .link-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: #eef2f7;
+            padding: 0.5rem 1rem;
+            border-radius: 40px;
+            text-decoration: none;
+            color: #1c7e9e;
+            font-weight: 500;
+            font-size: 0.85rem;
+            transition: all 0.2s;
+            margin-top: 0.5rem;
+            margin-right: 0.5rem;
+            border: 1px solid transparent;
+        }
+
+        .link-btn:hover {
+            background: #1c7e9e;
+            color: white;
+            border-color: #1c7e9e;
+        }
+
+        .profile-links {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            align-items: center;
+            margin-top: 0.8rem;
+        }
+
+        .profile-card {
+            background: linear-gradient(120deg, #ffffff, #f9fdfe);
+            border-radius: 1.5rem;
+            padding: 1.2rem 1.5rem;
+            border: 1px solid #dce9ef;
+        }
+
+        .footer-note {
+            text-align: center;
+            margin-top: 2rem;
+            padding-top: 1rem;
+            border-top: 1px solid #d4e2e9;
+            font-size: 0.8rem;
+            color: #5e7e8f;
+        }
+
+        @media (max-width: 680px) {
+            body {
+                padding: 1rem;
+            }
+            .hero h1 {
+                font-size: 2rem;
+            }
+            .content {
+                padding: 1.5rem;
+            }
+            .section-title {
+                font-size: 1.4rem;
+            }
+            .cards-grid {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <div class="hero">
+        <h1>Юртаев Глеб С.</h1>
+        <div class="birth-block">
+            <span>🎂</span> 10 августа 2009
+        </div>
+        <div class="badge">
+            ⚡ C# разработчик · Telegram Bot Creator
+        </div>
+    </div>
+
+    <div class="content">
+        <div class="section">
+            <div class="section-title">📌 О себе</div>
+            <div class="about-text">
+                Привет! Я Глеб, увлекаюсь программированием на <strong>C#</strong>. Создаю телеграм-ботов, помогаю с ошибками и многое другое.
+                Мой код превращает идеи в живые проекты, которыми пользуются люди. Активно развиваю своих ботов и сообщество, постоянно учусь новому.
+                <div class="tech-badge">🔧 C# / .NET / Telegram API</div>
+            </div>
+        </div>
+
+        <div class="section">
+            <div class="section-title">🤖 Мои Telegram боты</div>
+            <div class="cards-grid">
+                <div class="card">
+                    <h3>
+                        <span class="emoji-icon">🃏</span> Пирожки
+                    </h3>
+                    <p>
+                        Карточный бот, вдохновленный игрой <strong>Clash Royale</strong>. Собирай карты, соревнуйся с другими игроками колодой, открывай сундуки и получай эволюции. 
+                        Карточный бот в telegram!
+                    </p>
+                    <a href="#" class="link-btn" id="piesLink" target="_blank">⚔️ Играть в Пирожки →</a>
+                </div>
+                <div class="card">
+                    <h3>
+                        <span class="emoji-icon">🔮</span> Ирис подвал
+                    </h3>
+                    <p>
+                        <strong>Эксклюзивная версия</strong> ботов серии «Iris», созданная специально для ПоДвал. Мини-игры, рп команды, интеграция админ команд из дискорда. Только для своих!
+                    </p>
+                    <a href="#" class="link-btn" id="irisLink" target="_blank">🌿 Открыть Ирис подвал →</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="section">
+            <div class="section-title">📢 Мое комьюнити</div>
+            <div class="cards-grid">
+                <div class="card">
+                    <h3><span class="emoji-icon">📺</span> Telegram-канал</h3>
+                    <p>Новости разработки, анонсы обновлений ботов, крутые мемчики и многое другое. Подписывайся, чтобы быть в курсе!</p>
+                    <a href="#" class="link-btn" id="channelLink" target="_blank">📡 Перейти в канал →</a>
+                </div>
+                <div class="card">
+                    <h3><span class="emoji-icon">💬</span> Чат сообщества (ПоДвал)</h3>
+                    <p>
+                        Именно <strong>для этого чата</strong> создана эксклюзивная версия «Ирис подвал». Здесь мы общаемся на разные темы, придумываем новые мемы и проводим время с чилом. Присоединяйся!
+                    </p>
+                    <a href="#" class="link-btn" id="chatLink" target="_blank">🗣️ Войти в чат →</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Мой профиль -->
+        <div class="section">
+            <div class="section-title">👤 Мой профиль</div>
+            <div class="profile-card">
+                <div style="display: flex; align-items: center; gap: 12px; flex-wrap: wrap; margin-bottom: 12px;">
+                    <span style="font-size: 2rem;">🧑‍💻</span>
+                    <div>
+                        <strong style="font-size: 1.2rem;">Юртаев Глеб</strong><br>
+                        <span style="color: #2f6b84;">разработчик на C# · создатель карточного бота и ирис подвал</span>
+                    </div>
+                </div>
+                <div class="profile-links">
+                    <a href="#" class="link-btn" id="telegramProfileLink" target="_blank">📱 Telegram профиль</a>
+                </div>
+                <p style="margin-top: 1rem; font-size: 0.85rem; color: #446d7c;">✨ Всегда рад новым знакомствам и коллаборациям.</p>
+            </div>
+        </div>
+
+        <div class="footer-note">
+            © 2025 Юртаев Глеб | 10.08.2009 | C# энтузиаст | Clash Royale inspired bot · эксклюзив Iris
+        </div>
+    </div>
+</div>
+
+<script>
+    const LINKS = {
+        piesBot: "https://t.me/WeltobruhChatBot",
+        irisBot: "https://t.me/iris_podval_bot", 
+        channel: "https://t.me/WeltobruhChannel",
+        chat: "https://t.me/podval_dimenko",
+        telegramProfile: "https://t.me/ElVitamino22",
+    };
+
+    document.getElementById('piesLink').href = LINKS.piesBot;
+    document.getElementById('irisLink').href = LINKS.irisBot;
+    document.getElementById('channelLink').href = LINKS.channel;
+    document.getElementById('chatLink').href = LINKS.chat;
+    document.getElementById('telegramProfileLink').href = LINKS.telegramProfile;
+    document.getElementById('githubLink').href = LINKS.githubProfile;
+    document.getElementById('extraContact').href = LINKS.contactEmail;
+
+    const required = [LINKS.piesBot, LINKS.irisBot, LINKS.channel, LINKS.chat, LINKS.telegramProfile];
+    const defaultPatterns = ["https://t.me/pirozhki_clash_bot", "https://t.me/iris_podval_exclusive", "https://t.me/gleb_dev_channel", "https://t.me/gleb_community_chat", "https://t.me/glebyrtaev"];
+    let hasDefault = false;
+    for (let i = 0; i < required.length; i++) {
+        if (defaultPatterns.includes(required[i]) || required[i] === "#" || required[i] === "") {
+            hasDefault = true;
+            break;
+        }
+    }
+    if (hasDefault) {
+        console.log("📌 [Напоминание] Пожалуйста, замените ссылки в объекте LINKS (внутри тега <script>) на реальные: бот Пирожки, бот Ирис подвал, ваш канал, ЧАТ и профиль Telegram. Ссылка на чат особенно важна!");
+    }
+    if (LINKS.contactEmail === "mailto:gleb@example.com") {
+        console.log("📧 Обновите контактную ссылку (email или соцсеть) в LINKS.contactEmail, если хотите.");
+    }
+</script>
+
+</body>
+</html>

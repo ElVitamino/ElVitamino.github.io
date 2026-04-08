@@ -4,7 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
     <title>Глеб Юртаев | C# разработчик и создатель ботов</title>
-    <!-- Google Fonts + reset -->
     <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,600;14..32,700&display=swap" rel="stylesheet">
     <style>
         * {
@@ -227,7 +226,6 @@
     </div>
 
     <div class="content">
-        <!-- О себе -->
         <div class="section">
             <div class="section-title">📌 О себе</div>
             <div class="about-text">
@@ -237,11 +235,9 @@
             </div>
         </div>
 
-        <!-- Боты с обновленными описаниями -->
         <div class="section">
             <div class="section-title">🤖 Мои Telegram боты</div>
             <div class="cards-grid">
-                <!-- Пирожки - карточный бот по мотивам Clash Royale -->
                 <div class="card">
                     <h3>
                         <span class="emoji-icon">🃏</span> Пирожки
@@ -252,7 +248,6 @@
                     </p>
                     <a href="#" class="link-btn" id="piesLink" target="_blank">⚔️ Играть в Пирожки →</a>
                 </div>
-                <!-- Ирис подвал - эксклюзивная версия для чата -->
                 <div class="card">
                     <h3>
                         <span class="emoji-icon">🔮</span> Ирис подвал
@@ -265,7 +260,6 @@
             </div>
         </div>
 
-        <!-- Канал и чат (сообщества) с акцентом на ссылку чата -->
         <div class="section">
             <div class="section-title">📢 Мое комьюнити</div>
             <div class="cards-grid">
@@ -284,7 +278,6 @@
             </div>
         </div>
 
-        <!-- Мой профиль -->
         <div class="section">
             <div class="section-title">👤 Мой профиль</div>
             <div class="profile-card">
@@ -311,16 +304,13 @@
 <script>
     const LINKS = {
         // Боты:
-        piesBot: "https://t.me/WeltobruhChatBot",     // 🔁 замените на реальную ссылку бота "Пирожки"
-        irisBot: "https://t.me/iris_podval_bot",   // 🔁 замените на реальную ссылку бота "Ирис подвал"
-        // Канал и чат (особенно важна ссылка на чат):
-        channel: "https://t.me/WeltobruhChannel",        // 🔁 ваш канал
-        chat: "https://t.me/podval_dimenko",        // 🔁 ВАШ ЧАТ (для которого сделан эксклюзивный бот)
-        // Профиль / соцсети:
-        telegramProfile: "https://t.me/ElVitamino22",      // 🔁 ваш username
+        piesBot: "https://t.me/WeltobruhChatBot", 
+        irisBot: "https://t.me/iris_podval_bot", 
+        channel: "https://t.me/WeltobruhChannel",
+        chat: "https://t.me/podval_dimenko",
+        telegramProfile: "https://t.me/ElVitamino22",
     };
 
-    // Привязываем все кнопки
     document.getElementById('piesLink').href = LINKS.piesBot;
     document.getElementById('irisLink').href = LINKS.irisBot;
     document.getElementById('channelLink').href = LINKS.channel;
@@ -346,18 +336,5 @@
         console.log("📧 Обновите контактную ссылку (email или соцсеть) в LINKS.contactEmail, если хотите.");
     }
 </script>
-<!-- 
-    Инструкция по редактированию:
-    1. Откройте этот HTML в любом редакторе.
-    2. Найдите объект LINKS внутри тега <script>.
-    3. Вставьте свои рабочие ссылки:
-       - piesBot -> ссылка на вашего бота "Пирожки" (карточная игра Clash Royale стиль)
-       - irisBot -> ссылка на бота "Ирис подвал" (эксклюзив для вашего чата)
-       - channel -> ссылка на ваш Telegram-канал
-       - chat -> ссылка на ваш чат (самое важное, упоминается в описании)
-       - telegramProfile -> ваш личный Telegram
-    4. Сохраните файл и опубликуйте.
-    5. ФИО и дата рождения уже указаны корректно.
--->
 </body>
 </html>

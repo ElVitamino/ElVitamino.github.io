@@ -2,9 +2,9 @@
 <html lang="ru">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes, maximum-scale=1.5">
-  <title>Глеб Юртаев | Матрица C# и телеграм-ботов</title>
-  <link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&family=Inter:opsz,wght@14..32,400;14..32,600&display=swap" rel="stylesheet">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+  <title>Глеб Юртаев | C# разработчик и создатель ботов</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700&display=swap" rel="stylesheet">
   <style>
     * {
       margin: 0;
@@ -13,108 +13,120 @@
     }
 
     body {
-      background: #0a0f0a;
-      font-family: 'Inter', sans-serif;
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      background: #03030f;
+      color: #e2e8f0;
+      line-height: 1.5;
       min-height: 100vh;
       display: flex;
       align-items: center;
       justify-content: center;
-      padding: 1.5rem;
+      padding: 2rem 1.5rem;
       position: relative;
       overflow-x: hidden;
     }
 
-    /* Эффект падающего кода (Canvas) */
-    #matrixCanvas {
+    #galaxyCanvas {
       position: fixed;
       top: 0;
       left: 0;
       width: 100%;
       height: 100%;
       z-index: 0;
-      opacity: 0.55;
       pointer-events: none;
     }
 
     .container {
       position: relative;
       z-index: 2;
-      max-width: 1100px;
+      max-width: 1000px;
       width: 100%;
       margin: 0 auto;
-      background: rgba(0, 10, 2, 0.8);
-      backdrop-filter: blur(10px);
-      -webkit-backdrop-filter: blur(10px);
-      border: 1px solid #0f6b2f;
+      background: rgba(8, 8, 30, 0.7);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
       border-radius: 2rem;
-      box-shadow: 0 0 35px rgba(0, 255, 65, 0.25), inset 0 0 15px rgba(0, 255, 65, 0.1);
+      box-shadow: 0 25px 60px rgba(0, 0, 0, 0.6), 0 0 0 1px rgba(120, 120, 255, 0.25), 0 0 80px rgba(60, 60, 180, 0.2);
       overflow: hidden;
-      color: #b3ffcc;
-      transition: all 0.3s;
+      border: 1px solid rgba(140, 140, 255, 0.3);
     }
 
     .hero {
-      background: rgba(0, 20, 5, 0.7);
-      backdrop-filter: blur(4px);
-      padding: 2.5rem 2rem;
+      background: rgba(12, 12, 40, 0.5);
+      backdrop-filter: blur(10px);
+      padding: 2.5rem 2rem 2rem;
       text-align: center;
-      border-bottom: 2px solid #00cc44;
-      box-shadow: 0 5px 20px rgba(0, 180, 30, 0.3);
-      position: relative;
-      font-family: 'Share Tech Mono', monospace;
+      border-bottom: 1px solid rgba(160, 160, 255, 0.3);
+    }
+
+    .avatar {
+      width: 90px;
+      height: 90px;
+      border-radius: 50%;
+      background: radial-gradient(circle at 40% 40%, #3a3a8a, #151545);
+      margin: 0 auto 1.2rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 2.8rem;
+      box-shadow: 0 0 40px rgba(120, 120, 255, 0.5), 0 0 80px rgba(80, 80, 200, 0.3), 0 4px 15px rgba(0,0,0,0.5);
+      border: 2px solid rgba(200, 200, 255, 0.6);
     }
 
     .hero h1 {
-      font-size: 3rem;
-      font-weight: 400;
-      letter-spacing: 0.06em;
-      color: #00ff66;
-      text-shadow: 0 0 12px #00aa44, 0 0 25px #006622;
-      word-break: break-word;
-      text-transform: uppercase;
-      margin-bottom: 0.5rem;
+      font-size: 2.4rem;
+      font-weight: 700;
+      letter-spacing: -0.03em;
+      margin-bottom: 0.3rem;
+      color: #ffffff;
+      text-shadow: 0 0 30px rgba(160, 160, 255, 0.7), 0 0 60px rgba(100, 100, 255, 0.4);
     }
 
-    .glitch-text {
-      position: relative;
-      display: inline-block;
-    }
-
-    .hero .badge {
-      display: inline-block;
-      background: #0a2a0a;
-      border: 1px solid #00cc66;
-      padding: 0.4rem 1.5rem;
-      border-radius: 40px;
-      font-size: 1rem;
+    .hero .nick {
       font-weight: 500;
-      margin-top: 1rem;
-      color: #8effb2;
-      text-shadow: 0 0 6px #008844;
-      box-shadow: 0 0 15px #00aa44;
-      letter-spacing: 0.5px;
-      background: rgba(0, 30, 5, 0.8);
+      color: #c0c0f0;
+      font-size: 1.1rem;
+      margin-bottom: 1rem;
+    }
+
+    .birth-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      background: rgba(20, 20, 60, 0.7);
+      padding: 0.4rem 1.2rem;
+      border-radius: 30px;
+      font-size: 0.9rem;
+      font-weight: 500;
+      color: #d0d0ff;
+      margin-bottom: 0.8rem;
+      border: 1px solid rgba(150, 150, 230, 0.5);
       backdrop-filter: blur(5px);
     }
 
-    .birth-block {
-      margin-top: 1rem;
-      font-size: 1.3rem;
-      background: rgba(0, 0, 0, 0.5);
-      display: inline-flex;
-      align-items: center;
+    .tags {
+      display: flex;
+      flex-wrap: wrap;
       gap: 0.5rem;
-      padding: 0.45rem 1.8rem;
-      border-radius: 50px;
-      border: 1px dashed #00dd55;
-      color: #ccffcc;
-      backdrop-filter: blur(4px);
+      justify-content: center;
+      margin-top: 0.6rem;
+    }
+
+    .tag {
+      background: rgba(35, 35, 90, 0.6);
+      color: #c8c8ff;
+      padding: 0.35rem 1rem;
+      border-radius: 20px;
+      font-size: 0.8rem;
+      font-weight: 500;
+      border: 1px solid rgba(140, 140, 230, 0.5);
+      backdrop-filter: blur(5px);
     }
 
     .content {
-      padding: 2.5rem 2rem;
-      background: rgba(0, 8, 2, 0.55);
-      backdrop-filter: blur(4px);
+      padding: 2.2rem 2rem 2.5rem;
+      background: rgba(6, 6, 25, 0.45);
+      backdrop-filter: blur(5px);
     }
 
     .section {
@@ -122,46 +134,45 @@
     }
 
     .section-title {
-      font-family: 'Share Tech Mono', monospace;
-      font-size: 1.8rem;
-      font-weight: 400;
-      margin-bottom: 1.3rem;
-      border-left: 6px solid #00dd66;
-      padding-left: 1.2rem;
-      color: #00ff77;
-      text-shadow: 0 0 8px #00aa44;
-      letter-spacing: 1px;
-      text-transform: uppercase;
-      background: linear-gradient(90deg, rgba(0,30,10,0.4) 0%, transparent 90%);
-      border-radius: 0 4px 4px 0;
+      font-size: 1.4rem;
+      font-weight: 650;
+      margin-bottom: 1rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      color: #f0f0ff;
+      border-bottom: 2px solid rgba(140, 140, 220, 0.35);
+      padding-bottom: 0.6rem;
+      text-shadow: 0 0 15px rgba(120, 120, 220, 0.5);
     }
 
     .about-text {
-      background: #051005;
-      padding: 1.4rem 1.8rem;
-      border-radius: 1.5rem;
-      font-size: 1.05rem;
-      color: #c3ffcf;
-      border: 1px solid #1a7a3a;
-      box-shadow: 0 0 25px rgba(0, 200, 50, 0.2);
+      background: rgba(15, 15, 45, 0.55);
+      backdrop-filter: blur(10px);
+      padding: 1.3rem 1.5rem;
+      border-radius: 1.2rem;
+      font-size: 1rem;
+      color: #e0e0ff;
+      border: 1px solid rgba(120, 120, 220, 0.4);
       line-height: 1.6;
-      background: rgba(5, 20, 5, 0.7);
-      backdrop-filter: blur(3px);
     }
 
-    .tech-badge {
-      display: inline-block;
-      background: #0d2818;
-      color: #6eff9e;
-      padding: 0.25rem 1.2rem;
-      border-radius: 30px;
-      font-size: 0.9rem;
+    .tech-stack {
+      margin-top: 0.8rem;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+    }
+
+    .tech-item {
+      background: rgba(25, 25, 65, 0.7);
+      border: 1px solid rgba(120, 120, 220, 0.5);
+      padding: 0.3rem 1rem;
+      border-radius: 20px;
+      font-size: 0.8rem;
       font-weight: 500;
-      margin-top: 0.9rem;
-      border: 1px solid #00bb4a;
-      box-shadow: 0 0 14px #008844;
-      font-family: 'Share Tech Mono', monospace;
-      letter-spacing: 0.5px;
+      color: #d0d0ff;
+      backdrop-filter: blur(4px);
     }
 
     .cards-grid {
@@ -173,220 +184,197 @@
 
     .card {
       flex: 1;
-      min-width: 250px;
-      background: rgba(0, 15, 3, 0.75);
-      backdrop-filter: blur(8px);
-      border-radius: 1.5rem;
-      padding: 1.5rem;
-      box-shadow: 0 0 25px rgba(0, 230, 60, 0.2);
-      border: 1px solid #1f853f;
-      transition: transform 0.25s, box-shadow 0.3s, border-color 0.2s;
-      color: #ddffdd;
+      min-width: 240px;
+      background: rgba(15, 15, 45, 0.6);
+      backdrop-filter: blur(12px);
+      border-radius: 1.2rem;
+      padding: 1.4rem 1.5rem;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+      border: 1px solid rgba(120, 120, 220, 0.4);
+      transition: all 0.3s;
     }
 
     .card:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 0 40px #00cc44;
-      border-color: #00ff6a;
-      background: rgba(0, 22, 5, 0.85);
+      border-color: rgba(180, 180, 255, 0.7);
+      box-shadow: 0 0 45px rgba(100, 100, 240, 0.5), 0 10px 30px rgba(0,0,0,0.5);
+      transform: translateY(-3px);
+      background: rgba(20, 20, 55, 0.75);
     }
 
     .card h3 {
-      font-family: 'Share Tech Mono', monospace;
-      font-size: 1.6rem;
-      font-weight: 400;
-      margin-bottom: 0.7rem;
+      font-size: 1.25rem;
+      font-weight: 650;
+      margin-bottom: 0.5rem;
       display: flex;
       align-items: center;
-      gap: 10px;
-      color: #00ff77;
-      text-shadow: 0 0 8px #009944;
-      letter-spacing: 0.03em;
-    }
-
-    .emoji-icon {
-      font-size: 1.8rem;
-      filter: drop-shadow(0 0 6px #00aa44);
+      gap: 8px;
+      color: #ffffff;
     }
 
     .card p {
-      color: #b5f5c9;
+      color: #d0d0f0;
+      font-size: 0.92rem;
       margin-bottom: 1.2rem;
-      font-size: 0.98rem;
       line-height: 1.5;
     }
 
-    .link-btn {
+    .btn {
       display: inline-flex;
       align-items: center;
-      gap: 8px;
-      background: rgba(0, 0, 0, 0.55);
+      gap: 6px;
+      background: rgba(35, 35, 90, 0.6);
       backdrop-filter: blur(5px);
-      padding: 0.6rem 1.2rem;
-      border-radius: 40px;
+      padding: 0.55rem 1.1rem;
+      border-radius: 30px;
       text-decoration: none;
-      color: #9effc4;
-      font-weight: 500;
-      font-size: 0.9rem;
-      transition: all 0.25s;
-      margin-top: 0.4rem;
+      color: #d8d8ff;
+      font-weight: 550;
+      font-size: 0.85rem;
+      transition: all 0.3s;
+      border: 1px solid rgba(140, 140, 230, 0.6);
       margin-right: 0.5rem;
-      border: 1px solid #1e9e4b;
-      font-family: 'Share Tech Mono', monospace;
-      letter-spacing: 0.03em;
-      box-shadow: 0 0 10px rgba(0, 180, 30, 0.3);
+      margin-top: 0.3rem;
     }
 
-    .link-btn:hover {
-      background: #00cc55;
-      color: #021a07;
-      border-color: #00ff80;
-      box-shadow: 0 0 28px #00ff6a;
-      font-weight: 700;
-      text-shadow: none;
+    .btn:hover {
+      background: #5050ff;
+      color: white;
+      border-color: #a0a0ff;
+      box-shadow: 0 0 30px rgba(90, 90, 255, 0.7);
     }
 
-    .profile-links {
+    .profile-block {
+      background: rgba(15, 15, 45, 0.55);
+      backdrop-filter: blur(12px);
+      border-radius: 1.2rem;
+      padding: 1.2rem 1.5rem;
+      border: 1px solid rgba(120, 120, 220, 0.45);
       display: flex;
       flex-wrap: wrap;
-      gap: 1rem;
       align-items: center;
-      margin-top: 0.8rem;
+      gap: 1.2rem;
     }
 
-    .profile-card {
-      background: rgba(0, 12, 2, 0.7);
-      backdrop-filter: blur(6px);
-      border-radius: 1.5rem;
-      padding: 1.2rem 1.5rem;
-      border: 1px solid #1e8b42;
-      box-shadow: 0 0 30px rgba(0, 160, 40, 0.2);
+    .profile-avatar-small {
+      width: 56px;
+      height: 56px;
+      border-radius: 50%;
+      background: radial-gradient(circle at 40% 40%, #3a3a8a, #151545);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 2rem;
+      box-shadow: 0 0 25px rgba(120, 120, 255, 0.5);
     }
 
     .footer-note {
-      text-align: center;
       margin-top: 2rem;
-      padding-top: 1.2rem;
-      border-top: 1px solid #1b5e2c;
-      font-size: 0.8rem;
-      color: #6ea87b;
-      font-family: 'Share Tech Mono', monospace;
-      letter-spacing: 0.5px;
-      text-shadow: 0 0 4px #003311;
+      text-align: center;
+      font-size: 0.75rem;
+      color: #a0a0d0;
+      padding-top: 1rem;
+      border-top: 1px solid rgba(120, 120, 220, 0.35);
     }
 
-    @media (max-width: 680px) {
+    @media (max-width: 600px) {
       body {
         padding: 0.8rem;
       }
       .hero h1 {
-        font-size: 2.2rem;
+        font-size: 2rem;
       }
       .content {
         padding: 1.5rem;
-      }
-      .section-title {
-        font-size: 1.5rem;
-      }
-      .cards-grid {
-        flex-direction: column;
       }
     }
   </style>
 </head>
 <body>
-  <!-- Canvas для эффекта матрицы -->
-  <canvas id="matrixCanvas"></canvas>
+  <canvas id="galaxyCanvas"></canvas>
 
   <div class="container">
     <div class="hero">
-      <h1 class="glitch-text">Юртаев Глеб С.</h1>
-      <div class="birth-block">
-        <span>⌬</span> 10 августа 2009
+      <div class="avatar">🧑‍💻</div>
+      <h1>Глеб Юртаев</h1>
+      <div class="nick">@ElVitamino22</div>
+      <div class="birth-badge">
+        🎂 10 августа 2009
       </div>
-      <div class="badge">
-        ◈ C# разработчик · Telegram Bot Creator ◈
+      <div class="tags">
+        <span class="tag">C# разработчик</span>
+        <span class="tag">Telegram Bots</span>
+        <span class="tag">.NET</span>
       </div>
     </div>
 
     <div class="content">
       <div class="section">
-        <div class="section-title">> О себе_</div>
+        <div class="section-title"><span>👋</span> Привет, я Глеб</div>
         <div class="about-text">
-          <span style="color:#00ff6a;">root@gleb:~$</span> Привет! Я Глеб, погружён в мир <strong>C#</strong> и телеграм-ботов. Создаю цифровые вселенные, где карты и код становятся реальностью. Помогаю с ошибками, развиваю экосистему ботов и сообщество. Мой терминал всегда открыт для новых идей.
-          <div class="tech-badge">⚡ C# / .NET / Telegram API / Matrix</div>
+          Занимаюсь разработкой на C#, создаю Telegram-ботов и разные полезные штуки. Люблю превращать идеи в работающие проекты — от карточных игр до кастомных ботов для сообществ. Помогаю с багами, учусь новому и стараюсь, чтобы моим творчеством было приятно пользоваться.
+          <div class="tech-stack">
+            <span class="tech-item">C#</span>
+            <span class="tech-item">.NET</span>
+            <span class="tech-item">Telegram API</span>
+            <span class="tech-item">SQLite</span>
+          </div>
         </div>
       </div>
 
       <div class="section">
-        <div class="section-title">> Боты_в_сети</div>
+        <div class="section-title"><span>🤖</span> Мои боты</div>
         <div class="cards-grid">
           <div class="card">
-            <h3>
-              <span class="emoji-icon">🃏</span> Пирожки
-            </h3>
-            <p>
-              <span style="color:#b0ffb0;">[Clash Royale дух]</span> Карточный бот, где ты собираешь колоду, сражаешься, открываешь сундуки и получаешь эволюции. Битва в Telegram.
-            </p>
-            <a href="#" class="link-btn" id="piesLink" target="_blank">▶ Играть в Пирожки</a>
+            <h3><span>🃏</span> Пирожки</h3>
+            <p>Карточный бот по мотивам <strong>Clash Royale</strong>. Собирай карты, составляй колоду, дерись с другими игроками, открывай сундуки и получай эволюции. Прямо в Telegram!</p>
+            <a href="#" class="btn" id="piesLink" target="_blank">⚔️ Играть</a>
           </div>
           <div class="card">
-            <h3>
-              <span class="emoji-icon">🔮</span> Ирис подвал
-            </h3>
-            <p>
-              <strong>Эксклюзивная Iris</strong> для ПоДвала. РП-команды, мини-игры и дискорд-интеграция. Только для избранных.
-            </p>
-            <a href="#" class="link-btn" id="irisLink" target="_blank">▶ Открыть Ирис</a>
+            <h3><span>🔮</span> Ирис подвал</h3>
+            <p><strong>Эксклюзивная версия</strong> бота Iris для чата «ПоДвал». Мини-игры, рп-команды, интеграция с Discord. Доступ только для своих.</p>
+            <a href="#" class="btn" id="irisLink" target="_blank">🌿 Открыть</a>
           </div>
         </div>
       </div>
 
       <div class="section">
-        <div class="section-title">> Комьюнити_</div>
+        <div class="section-title"><span>💬</span> Моё комьюнити</div>
         <div class="cards-grid">
           <div class="card">
-            <h3><span class="emoji-icon">📡</span> Канал</h3>
-            <p>Анонсы обновлений, мемы и новости разработки. Подпишись на сигнал.</p>
-            <a href="#" class="link-btn" id="channelLink" target="_blank">▶ Перейти в канал</a>
+            <h3><span>📢</span> Telegram-канал</h3>
+            <p>Новости о разработке, анонсы обновлений, мемы и закулисье моих проектов.</p>
+            <a href="#" class="btn" id="channelLink" target="_blank">📡 Подписаться</a>
           </div>
           <div class="card">
-            <h3><span class="emoji-icon">💬</span> Чат ПоДвал</h3>
-            <p>
-              Место силы. Для этого чата создана Ирис подвал. Общение, мемы и чилл.
-            </p>
-            <a href="#" class="link-btn" id="chatLink" target="_blank">▶ Войти в чат</a>
+            <h3><span>🗨️</span> Чат «ПоДвал»</h3>
+            <p>То самое место, для которого создавалась <strong>Ирис подвал</strong>. Общаемся, чиллим, придумываем мемы и просто хорошо проводим время.</p>
+            <a href="#" class="btn" id="chatLink" target="_blank">💬 Войти в чат</a>
           </div>
         </div>
       </div>
 
       <div class="section">
-        <div class="section-title">> user_profile</div>
-        <div class="profile-card">
-          <div style="display: flex; align-items: center; gap: 14px; flex-wrap: wrap; margin-bottom: 14px;">
-            <span style="font-size: 2.3rem; filter: drop-shadow(0 0 8px #00aa44);">🧑‍💻</span>
-            <div>
-              <strong style="font-size: 1.4rem; color:#00ff70; font-family: 'Share Tech Mono';">Gleb Yurtaev</strong><br>
-              <span style="color: #99e6b3;">C# dev · создатель карточного бота и Iris подвал</span>
-            </div>
+        <div class="section-title"><span>👤</span> Связь со мной</div>
+        <div class="profile-block">
+          <div class="profile-avatar-small">🧑‍💻</div>
+          <div style="flex:1;">
+            <strong style="font-size:1.1rem;">Глеб Юртаев</strong>
+            <div style="color:#c0c0e0; font-size:0.9rem;">C# разработчик, создатель «Пирожков» и «Ирис подвал»</div>
           </div>
-          <div class="profile-links">
-            <a href="#" class="link-btn" id="telegramProfileLink" target="_blank">📱 Telegram профиль</a>
-          </div>
-          <p style="margin-top: 1rem; font-size: 0.9rem; color: #6fbf8a;">⚡ Всегда открыт к коллаборациям и новым соединениям.</p>
+          <a href="#" class="btn" id="telegramProfileLink" target="_blank">📱 Написать в Telegram</a>
         </div>
+        <p style="margin-top: 0.8rem; font-size:0.85rem; color:#a0a0d0;">Всегда открыт к новым идеям, коллаборациям и просто поболтать :)</p>
       </div>
 
       <div class="footer-note">
-        © 2026 Юртаев Глеб | 10.08.2009 | C# энтузиаст | Clash Royale inspired · Iris exclusive<br>
-        <span style="color:#00cc55;">[ Связь установлена ]</span>
+        © 2026 Глеб Юртаев · 10.08.2009 · C# & Telegram Bots
       </div>
     </div>
   </div>
 
   <script>
     (function() {
-      // ---------- НАСТРОЙКИ ССЫЛОК (те же, что были) ----------
+      // Ссылки
       const LINKS = {
         piesBot: "https://t.me/WeltobruhChatBot",
         irisBot: "https://t.me/iris_podval_bot",
@@ -394,102 +382,172 @@
         chat: "https://t.me/podval_dimenko",
         telegramProfile: "https://t.me/ElVitamino22",
       };
+      document.getElementById('piesLink').href = LINKS.piesBot;
+      document.getElementById('irisLink').href = LINKS.irisBot;
+      document.getElementById('channelLink').href = LINKS.channel;
+      document.getElementById('chatLink').href = LINKS.chat;
+      document.getElementById('telegramProfileLink').href = LINKS.telegramProfile;
 
-      // Применяем ссылки к элементам
-      const piesEl = document.getElementById('piesLink');
-      const irisEl = document.getElementById('irisLink');
-      const channelEl = document.getElementById('channelLink');
-      const chatEl = document.getElementById('chatLink');
-      const profileEl = document.getElementById('telegramProfileLink');
+      // ГАЛАКТИКА
+      const canvas = document.getElementById('galaxyCanvas');
+      const ctx = canvas.getContext('2d');
+      let width, height;
+      let particles = [];
+      const PARTICLE_COUNT = 150; // Больше точек
+      const MAX_DIST = 150;
+      const REPEL_RADIUS = 120;
+      const REPEL_FORCE = 10;
 
-      if (piesEl) piesEl.href = LINKS.piesBot;
-      if (irisEl) irisEl.href = LINKS.irisBot;
-      if (channelEl) channelEl.href = LINKS.channel;
-      if (chatEl) chatEl.href = LINKS.chat;
-      if (profileEl) profileEl.href = LINKS.telegramProfile;
+      let mouseX = -1000, mouseY = -1000, mouseActive = false;
 
-      // Небольшая проверка в консоли (как в исходном коде)
-      const required = [LINKS.piesBot, LINKS.irisBot, LINKS.channel, LINKS.chat, LINKS.telegramProfile];
-      const defaultPatterns = ["https://t.me/pirozhki_clash_bot", "https://t.me/iris_podval_exclusive", "https://t.me/gleb_dev_channel", "https://t.me/gleb_community_chat", "https://t.me/glebyrtaev"];
-      let hasDefault = false;
-      for (let i = 0; i < required.length; i++) {
-        if (defaultPatterns.includes(required[i]) || required[i] === "#" || required[i] === "") {
-          hasDefault = true;
-          break;
+      // Цвета для звёзд
+      const starColors = [
+        '#c8c8ff', '#b0b0ff', '#a0c0ff', '#d0d0ff', 
+        '#ffccdd', '#ffe0cc', '#ccddff', '#e0e0ff',
+        '#ffd0e0', '#d0e0ff', '#c0d0ff', '#e8e0ff'
+      ];
+
+      function createParticles() {
+        particles = [];
+        for (let i = 0; i < PARTICLE_COUNT; i++) {
+          particles.push({
+            x: Math.random() * width,
+            y: Math.random() * height,
+            vx: (Math.random() - 0.5) * 0.5,
+            vy: (Math.random() - 0.5) * 0.5,
+            radius: Math.random() * 2.5 + 1.2,
+            color: starColors[Math.floor(Math.random() * starColors.length)],
+            pulse: Math.random() * Math.PI * 2,
+            pulseSpeed: Math.random() * 0.02 + 0.01,
+            brightness: Math.random() * 0.5 + 0.5,
+          });
         }
       }
-      if (hasDefault) {
-        console.log("📌 [Matrix mode] Обнови ссылки в объекте LINKS (внутри скрипта) на актуальные: боты, канал, чат и профиль.");
-      }
-
-      // ---------- ЭФФЕКТ МАТРИЦЫ (Canvas) ----------
-      const canvas = document.getElementById('matrixCanvas');
-      const ctx = canvas.getContext('2d');
-
-      let width, height;
-      let columns;
-      let drops;
-      const fontSize = 16; 
-      const chars = "アイウエオカキクケコサシスセソタチツテトナニヌネノハヒフヘホマミムメモヤユヨラリルレロワヲン0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ<>/\\|{}[]#@$%&*";
-      const charArray = chars.split("");
 
       function resizeCanvas() {
         width = window.innerWidth;
         height = window.innerHeight;
         canvas.width = width;
         canvas.height = height;
-        
-        columns = Math.floor(width / fontSize) + 1;
-        drops = [];
-        for (let i = 0; i < columns; i++) {
-          drops[i] = Math.floor(Math.random() * -height / fontSize) * fontSize; 
-        }
+        if (particles.length === 0) createParticles();
       }
 
-      function drawMatrix() {
-        ctx.fillStyle = "rgba(0, 5, 0, 0.08)"; 
+      // Рисуем фоновые туманности
+      function drawNebula() {
+        const gradient1 = ctx.createRadialGradient(width*0.2, height*0.3, 50, width*0.2, height*0.3, 500);
+        gradient1.addColorStop(0, 'rgba(40, 20, 80, 0.08)');
+        gradient1.addColorStop(1, 'rgba(0, 0, 0, 0)');
+        ctx.fillStyle = gradient1;
         ctx.fillRect(0, 0, width, height);
-        
-        ctx.fillStyle = "#0f0"; 
-        ctx.font = fontSize + "px 'Share Tech Mono', monospace";
-        ctx.shadowColor = "#00ff66";
-        ctx.shadowBlur = 8;
-        
-        for (let i = 0; i < drops.length; i++) {
-          const text = charArray[Math.floor(Math.random() * charArray.length)];
-          const x = i * fontSize;
-          const y = drops[i] * 1;
-          
-          if (y < height && y > -fontSize) {
-            ctx.fillText(text, x, y);
-          }
-          
-          if (y > height && Math.random() > 0.975) {
-            drops[i] = 0;
-          }
-          drops[i] += fontSize * 0.9; 
-        }
-        ctx.shadowBlur = 0; 
+
+        const gradient2 = ctx.createRadialGradient(width*0.8, height*0.7, 50, width*0.8, height*0.7, 450);
+        gradient2.addColorStop(0, 'rgba(20, 30, 90, 0.07)');
+        gradient2.addColorStop(1, 'rgba(0, 0, 0, 0)');
+        ctx.fillStyle = gradient2;
+        ctx.fillRect(0, 0, width, height);
+
+        const gradient3 = ctx.createRadialGradient(width*0.5, height*0.5, 100, width*0.5, height*0.5, 600);
+        gradient3.addColorStop(0, 'rgba(30, 10, 60, 0.05)');
+        gradient3.addColorStop(1, 'rgba(0, 0, 0, 0)');
+        ctx.fillStyle = gradient3;
+        ctx.fillRect(0, 0, width, height);
       }
 
-      let animationId;
+      function updateParticles() {
+        for (let p of particles) {
+          p.x += p.vx;
+          p.y += p.vy;
+          if (p.x < 0) { p.x = 0; p.vx *= -1; }
+          if (p.x > width) { p.x = width; p.vx *= -1; }
+          if (p.y < 0) { p.y = 0; p.vy *= -1; }
+          if (p.y > height) { p.y = height; p.vy *= -1; }
+
+          if (mouseActive) {
+            const dx = p.x - mouseX;
+            const dy = p.y - mouseY;
+            const dist = Math.sqrt(dx*dx + dy*dy);
+            if (dist < REPEL_RADIUS && dist > 0.01) {
+              const angle = Math.atan2(dy, dx);
+              const force = (REPEL_RADIUS - dist) / REPEL_RADIUS * REPEL_FORCE;
+              p.x += Math.cos(angle) * force;
+              p.y += Math.sin(angle) * force;
+            }
+          }
+          p.pulse += p.pulseSpeed;
+        }
+      }
+
+      function drawGalaxy() {
+        ctx.clearRect(0, 0, width, height);
+        drawNebula();
+
+        // Линии
+        ctx.strokeStyle = 'rgba(150, 150, 240, 0.15)';
+        ctx.lineWidth = 0.6;
+        for (let i = 0; i < particles.length; i++) {
+          for (let j = i+1; j < particles.length; j++) {
+            const dx = particles[i].x - particles[j].x;
+            const dy = particles[i].y - particles[j].y;
+            const dist = Math.sqrt(dx*dx + dy*dy);
+            if (dist < MAX_DIST) {
+              ctx.beginPath();
+              ctx.moveTo(particles[i].x, particles[i].y);
+              ctx.lineTo(particles[j].x, particles[j].y);
+              ctx.stroke();
+            }
+          }
+        }
+
+        // Точки с пульсацией
+        for (let p of particles) {
+          const pulseAlpha = 0.5 + Math.sin(p.pulse) * 0.3;
+          const glow = 8 + Math.sin(p.pulse) * 4;
+          ctx.beginPath();
+          ctx.arc(p.x, p.y, p.radius, 0, Math.PI*2);
+          ctx.fillStyle = p.color;
+          ctx.shadowColor = p.color;
+          ctx.shadowBlur = glow;
+          ctx.globalAlpha = 0.7 + pulseAlpha * 0.3;
+          ctx.fill();
+        }
+        ctx.shadowBlur = 0;
+        ctx.globalAlpha = 1;
+      }
+
       function animate() {
-        drawMatrix();
-        animationId = requestAnimationFrame(animate);
+        updateParticles();
+        drawGalaxy();
+        requestAnimationFrame(animate);
       }
 
-      window.addEventListener('resize', () => {
-        if (animationId) {
-          cancelAnimationFrame(animationId);
-        }
-        resizeCanvas();
-        animate();
+      window.addEventListener('mousemove', e => {
+        mouseX = e.clientX; mouseY = e.clientY; mouseActive = true;
       });
+      window.addEventListener('mouseleave', () => mouseActive = false);
+      window.addEventListener('mouseenter', e => {
+        mouseX = e.clientX; mouseY = e.clientY; mouseActive = true;
+      });
+      window.addEventListener('touchmove', e => {
+        if (e.touches.length) {
+          mouseX = e.touches[0].clientX;
+          mouseY = e.touches[0].clientY;
+          mouseActive = true;
+        }
+      }, {passive: true});
+      window.addEventListener('touchend', () => mouseActive = false);
+      window.addEventListener('touchstart', e => {
+        if (e.touches.length) {
+          mouseX = e.touches[0].clientX;
+          mouseY = e.touches[0].clientY;
+          mouseActive = true;
+        }
+      });
+      window.addEventListener('touchcancel', () => mouseActive = false);
 
       resizeCanvas();
+      createParticles();
       animate();
-
-      // Дополнительно: легкое мерцание контейнера (опционально)
+      window.addEventListener('resize', resizeCanvas);
     })();
   </script>
 </body>

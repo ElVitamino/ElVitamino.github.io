@@ -24,7 +24,6 @@
       padding: 2rem 1.5rem;
       position: relative;
       overflow-x: hidden;
-      /* Убираем выделение текста */
       -webkit-user-select: none;
       -moz-user-select: none;
       -ms-user-select: none;
@@ -379,7 +378,6 @@
 
   <script>
     (function() {
-      // Ссылки
       const LINKS = {
         piesBot: "https://t.me/WeltobruhChatBot",
         irisBot: "https://t.me/iris_podval_bot",
@@ -393,12 +391,11 @@
       document.getElementById('chatLink').href = LINKS.chat;
       document.getElementById('telegramProfileLink').href = LINKS.telegramProfile;
 
-      // ГАЛАКТИКА — больше точек, глубокий космос
       const canvas = document.getElementById('galaxyCanvas');
       const ctx = canvas.getContext('2d');
       let width, height;
       let particles = [];
-      const PARTICLE_COUNT = 250; // Значительно больше точек
+      const PARTICLE_COUNT = 250; 
       const MAX_DIST = 155;
       const REPEL_RADIUS = 130;
       const REPEL_FORCE = 11;
@@ -439,7 +436,6 @@
         if (particles.length === 0) createParticles();
       }
 
-      // Глубокие туманности
       function drawNebula() {
         const g1 = ctx.createRadialGradient(width*0.25, height*0.25, 30, width*0.25, height*0.25, 550);
         g1.addColorStop(0, 'rgba(50, 20, 90, 0.07)');
@@ -494,7 +490,6 @@
         ctx.clearRect(0, 0, width, height);
         drawNebula();
 
-        // Линии между близкими звёздами
         ctx.strokeStyle = 'rgba(160, 160, 250, 0.13)';
         ctx.lineWidth = 0.5;
         for (let i = 0; i < particles.length; i++) {
@@ -511,7 +506,6 @@
           }
         }
 
-        // Звёзды с пульсацией
         for (let p of particles) {
           const pulseAlpha = 0.5 + Math.sin(p.pulse) * 0.35;
           const glow = 7 + Math.sin(p.pulse) * 5;
